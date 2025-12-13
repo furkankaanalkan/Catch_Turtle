@@ -1,63 +1,52 @@
 import turtle
 import random
-import time
+
+
 screen = turtle.Screen()
-Lturtle = turtle.Turtle()
-Lturtle.shape("turtle")
-Lturtle.shapesize(2)
-Lturtle.color("green")
-Lturtle.left(90)
-
-
-Lturtle.write("Merhaba Dünya!")
-
-
+myturtle = turtle.Turtle()
+myturtle.shape("turtle")
+myturtle.shapesize(2)
+myturtle.color("green")
+myturtle.left(90)
 
 screen.bgcolor("light blue")
 screen.title("Catch Turtle Game")
+screen.screensize(400,400)
+
+myturtle.speed(3)
 
 
-Lturtle.speed(3)
+written = 0
 
-screen.screensize(350,350)
+
+
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("black")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 320)
+pen.write(" Score: 0 ", align="center", font=("Arial", 24, "normal"))
+
+def click(x,y):
+    global written
+    screen.update()
+    written += 1
+    x=0
+    y=0
+    pen.clear()
+    pen.write(" Score :{} ".format(written),align="center")
+
+turtle.listen()
+myturtle.onclick(click)
 
 while True:
-    Lturtle.penup()
-    Lturtle.goto(random.randint(-320,320),random.randint(-300,300))
-    Lturtle.hideturtle()
-    Lturtle.showturtle()
-
-
-screen.listen()
+    myturtle.penup()
+    myturtle.goto(random.randint(-320,320),random.randint(-300,300))
+    myturtle.hideturtle()
+    myturtle.showturtle()
 
 
 
 
-
-screen.mainloop()
-
-"""
-import time
-import sys
-from plyer import notifi
-def countdown(t):
-    while t:
-        mins, secs = divmod(t, 60)
-        timer = f"{mins:02d}:{secs:02d}"
-
-        sys.stdout.write("\r" + timer + "   ")
-        sys.stdout.flush()
-
-        time.sleep(1)
-        t -= 1
-
-    print("\nZamanlayıcı sona erdi")
-
-    notification.notify(
-        title="Time manager",
-        message="TİME İS OUT !!!",
-        timeout=1
-    )
-t = int(input("zamanı giriniz: "))
-countdown(t)2
-"""
+turtle.mainloop()
