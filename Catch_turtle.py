@@ -1,11 +1,12 @@
 import turtle
 import random
+import time
 
 
 screen = turtle.Screen()
 myturtle = turtle.Turtle()
 myturtle.shape("turtle")
-myturtle.shapesize(2)
+myturtle.shapesize(4)
 myturtle.color("green")
 myturtle.left(90)
 
@@ -14,7 +15,6 @@ screen.title("Catch Turtle Game")
 screen.screensize(400,400)
 
 myturtle.speed(3)
-
 
 written = 0
 
@@ -33,20 +33,17 @@ def click(x,y):
     screen.update()
     written += 1
     x=0
-    y=0cd
+    y=0
     pen.clear()
     pen.write(" Score :{} ".format(written),align="center")
-
-turtle.listen()
 myturtle.onclick(click)
+turtle.listen()
 
 while True:
     myturtle.penup()
-    myturtle.goto(random.randint(-320,320),random.randint(-300,300))
     myturtle.hideturtle()
+    myturtle.teleport(random.randint(-320,320),random.randint(-300,300))
     myturtle.showturtle()
+    screen.delay(400)
 
-
-
-
-turtle.mainloop()
+timing(8)
