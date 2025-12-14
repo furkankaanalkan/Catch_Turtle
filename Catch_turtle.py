@@ -33,7 +33,7 @@ def click(x,y):
     screen.update()
     written += 1
     x=0
-    y=0
+    y=0cd
     pen.clear()
     pen.write(" Score :{} ".format(written),align="center")
 
